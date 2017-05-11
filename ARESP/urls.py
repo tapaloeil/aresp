@@ -35,4 +35,5 @@ urlpatterns = [
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
     url(r'', include ('front.urls')),
     url(r'^about/$',TemplateView.as_view(template_name='about.html'),name='about'),
+    url(r'^tinymce/', include('tinymce.urls')),
 ]

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.timezone import datetime
+from tinymce.models import HTMLField
     
 
 class Animal(models.Model):
@@ -52,6 +53,7 @@ class Animal(models.Model):
         default='01',
         )
     description = models.TextField(blank=True,null=True)
+    description2 = HTMLField(blank=True,null=True)
     date_ajout =models.DateTimeField(auto_now_add=True)
     user_ajout = models.ForeignKey('auth.User',null=True)
     date_publication = models.DateTimeField(blank=True,null=True,editable=False)
