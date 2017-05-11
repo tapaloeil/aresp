@@ -1,0 +1,13 @@
+{% extends 'front/base.html' %}
+
+{% block content %}
+    <div class="animal">
+        {% if animal.date_publication %}
+            <div class="date">
+                {{ animal.date_publication }}
+            </div>
+        {% endif %}
+        <h1>{{ animal.nom }}</h1>
+        <p>{{ animal.description|linebreaksbr }}</p>
+    </div>
+{% endblock %}
