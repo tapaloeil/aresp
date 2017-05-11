@@ -60,5 +60,9 @@ class Animal(models.Model):
         self.date_publication=timezone.now()
         self.save()
 
+    def is_publie(self):
+        return self.date_publication is not None
+    is_publie.boolean=True
+
     def __str__(self):
         return self.nom

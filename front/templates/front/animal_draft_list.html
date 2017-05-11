@@ -1,0 +1,11 @@
+{% extends 'front/base.html' %}
+
+{% block content %}
+    {% for animal in animals %}
+        <div class="animal">
+            <p class="date">date d'ajout: {{ animal.date_ajout|date:'d-m-Y' }}</p>
+            <h1><a href="{% url 'animal_detail' pk=animal.pk %}">{{ animal.nom }}</a></h1>
+            <p>{{ animal.description|truncatechars:200 }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
