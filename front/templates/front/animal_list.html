@@ -1,13 +1,38 @@
 {% extends 'front/base.html' %}
 
 {% block content %}
+<div class="col-sm-12">
+    <div class='row'>
     {% for animal in animals %}
-        <div class="animal">
-            <div class="date">
-                <p>published: {{ animal.date_publication }}</p>
+        <div class="col-sm-6">
+            <div class="thumbnail">
+                {% if animal.image_temp %}
+                <img src='{{ animal.image_temp.url }}' class='img-responsive' />
+                {% endif %}
+                <div class="caption">
+                    <h3><a href="{% url 'animal_detail' pk=animal.pk %}">{{ animal.nom }}</a> <small>il y a {{ animal.date_publication|timesince }}</small></h3>
+                    <p>{{ animal.description|linebreaksbr }}</p>
+                </div>
             </div>
-            <h1><a href="{% url 'animal_detail' pk=animal.pk %}">{{ animal.nom }}</a></h1>
-            <p>{{ animal.description|linebreaksbr }}</p>
         </div>
+    {% cycle "" "</div><div class='row'>" %}
     {% endfor %}
-{% endblock %}
+    </div>
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if animals.has_previous %}
+            <a href="?page={{ animals.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ animals.number }} of {{ animals.paginator.num_pages }}.
+        </span>
+
+        {% if animals.has_next %}
+            <a href="?page={{ animals.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock content %}

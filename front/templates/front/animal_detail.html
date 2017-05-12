@@ -1,7 +1,10 @@
 {% extends 'front/base.html' %}
 
 {% block content %}
-    <div class="animal">
+    <div class="col-sm-6">
+        {% if animal.image_temp %}
+        <img src='{{ animal.image_temp.url }}' class='img-responsive' />
+        {% endif %}
         {% if animal.date_publication %}
             <div class="date">
                 {{ animal.date_publication }}
@@ -15,5 +18,7 @@
         {% endif %}
         <h1>{{ animal.nom }}</h1>
         <p>{{ animal.description|linebreaksbr }}</p>
+
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}">Share on Facebook</a>
     </div>
 {% endblock %}

@@ -23,6 +23,8 @@ from django.contrib.auth.views import (
    password_reset_confirm,
    password_reset_complete
 )
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^accounts/password/reset/$', views.password_reset, {'template_name': 'registration/custom_password_reset_form.html'}, name="password_reset"),
@@ -37,3 +39,7 @@ urlpatterns = [
     url(r'^about/$',TemplateView.as_view(template_name='about.html'),name='about'),
     url(r'^tinymce/', include('tinymce.urls')),
 ]
+
+if settings.DEBUG:
+	urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
