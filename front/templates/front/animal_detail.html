@@ -10,7 +10,6 @@
         $('head').append(' <meta property="og:image"         content="{% if animal.image_temp %}http://tapaloeil.pyhtonanwhere.com/{{ animal.image_temp.url }}{% endif %}" />');
     </script>
     <div class="col-sm-6">
-    {{ animal.image_temp.url }}
         {% if animal.image_temp %}
         <img src='{{ animal.image_temp.url }}' class='img-responsive' />
         {% endif %}
