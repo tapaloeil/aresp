@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'front',
     'registration',
     'tinymce',
+    'fullurl',
 ]
 
 MIDDLEWARE = [

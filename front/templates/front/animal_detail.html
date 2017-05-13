@@ -1,4 +1,5 @@
 {% extends 'front/base.html' %}
+{% load fullurl %}
 
 {% block content %}
     <script>
@@ -6,11 +7,12 @@
         $('head').append('<meta property="og:type"          content="website" />');
         $('head').append(' <meta property="og:title"         content="{{ animal.nom }}" />');
         $('head').append(' <meta property="og:description"         content="{{ animal.description|linebreaksbr }}" />');
-        $('head').append(' <meta property="og:image"         content="{{ animal.image_temp.url }}" />');
+        $('head').append(' <meta property="og:image"         content="{% if animal.image_temp %}"http://tapaloeil.pythonanwhere.com/"{{ animal.image_temp.url }}{% endif %}" />');
     </script>
     <div class="col-sm-6">
+    {{ animal.image_temp.url }}
         {% if animal.image_temp %}
-        <img src='{{ animal.image_temp.build_absolute_uri }}' class='img-responsive' />
+        <img src='{{ animal.image_temp.url }}' class='img-responsive' />
         {% endif %}
         {% if animal.date_publication %}
             <div class="date">
