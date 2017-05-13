@@ -7,7 +7,7 @@
         $('head').append('<meta property="og:type"          content="website" />');
         $('head').append(' <meta property="og:title"         content="{{ animal.nom }}" />');
         $('head').append(' <meta property="og:description"         content="{{ animal.description|linebreaksbr }}" />');
-        $('head').append(' <meta property="og:image"         content="{% if animal.image_temp %}http://tapaloeil.pyhtonanwhere.com/{{ animal.image_temp.url }}{% endif %}" />');
+        $('head').append(' <meta property="og:image"         content="{% if animal.image_temp %}http://tapaloeil.pyhtonanwhere.com{{ animal.image_temp.url }}{% endif %}" />');
     </script>
     <div class="col-sm-6">
         {% if animal.image_temp %}
